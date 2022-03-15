@@ -6,6 +6,8 @@ name: Update plot once a week
 on:
   schedule:
   - cron: "0 12 * * 4"
+  push:
+    branches: [main]
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -21,6 +23,9 @@ jobs:
       
       - name: Get current data
         run: curl https://www.destatis.de/DE/Themen/Gesellschaft-Umwelt/Bevoelkerung/Sterbefaelle-Lebenserwartung/Tabellen/sonderauswertung-sterbefaelle.xlsx?__blob=publicationFile -o sonderauswertung-sterbefaelle.xlsx
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
 
       - name: Build plot
         run: python plot.py
