@@ -29,3 +29,10 @@ jobs:
 
       - name: Build plot
         run: python plot.py
+        
+      - name: upload artifact 
+        uses: actions/upload-artifact@v3
+        with:
+          name: mortality
+          path: mortality.png
+          retention-days: 14
