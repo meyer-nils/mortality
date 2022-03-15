@@ -17,10 +17,10 @@ jobs:
       - uses: actions/checkout@v2
 
       - name: Get older data
-        run: curl https://www.destatis.de/DE/Themen/Gesellschaft-Umwelt/Bevoelkerung/Sterbefaelle-Lebenserwartung/Tabellen/sonderauswertung-sterbefaelle-endgueltige-daten.xlsx?__blob=publicationFile --output sonderauswertung-sterbefaelle-endgueltige-daten.xlsx
+        run: curl https://www.destatis.de/DE/Themen/Gesellschaft-Umwelt/Bevoelkerung/Sterbefaelle-Lebenserwartung/Tabellen/sonderauswertung-sterbefaelle-endgueltige-daten.xlsx?__blob=publicationFile -o sonderauswertung-sterbefaelle-endgueltige-daten.xlsx
       
       - name: Get current data
-        run: curl https://www.destatis.de/DE/Themen/Gesellschaft-Umwelt/Bevoelkerung/Sterbefaelle-Lebenserwartung/Tabellen/sonderauswertung-sterbefaelle.xlsx;jsessionid=CF2DF61EDA70BF4890B6577392C84594.live742?__blob=publicationFile --output sonderauswertung-sterbefaelle.xlsx
+        run: curl https://www.destatis.de/DE/Themen/Gesellschaft-Umwelt/Bevoelkerung/Sterbefaelle-Lebenserwartung/Tabellen/sonderauswertung-sterbefaelle.xlsx;jsessionid=CF2DF61EDA70BF4890B6577392C84594.live742?__blob=publicationFile -o sonderauswertung-sterbefaelle.xlsx
 
       - name: Build plot
         run: python plot.py
