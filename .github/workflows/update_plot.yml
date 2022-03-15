@@ -1,0 +1,26 @@
+# This is a basic workflow to help you get started with Actions
+
+name: Update plot once a week
+
+# Controls when the workflow will run
+on:
+  schedule:
+  - cron: "0 12 * * 4"
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Get older data
+        run: curl https://www.destatis.de/DE/Themen/Gesellschaft-Umwelt/Bevoelkerung/Sterbefaelle-Lebenserwartung/Tabellen/sonderauswertung-sterbefaelle-endgueltige-daten.xlsx?__blob=publicationFile --output sonderauswertung-sterbefaelle-endgueltige-daten.xlsx
+      
+      - name: Get current data
+        run: curl https://www.destatis.de/DE/Themen/Gesellschaft-Umwelt/Bevoelkerung/Sterbefaelle-Lebenserwartung/Tabellen/sonderauswertung-sterbefaelle.xlsx;jsessionid=CF2DF61EDA70BF4890B6577392C84594.live742?__blob=publicationFile --output sonderauswertung-sterbefaelle.xlsx
+
+      - name: Build plot
+        run: python plot.py
