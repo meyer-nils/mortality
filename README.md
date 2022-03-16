@@ -1,6 +1,21 @@
 # Mortality in Germany
 
+Plotting data to see if there is increased mortality during the COVID-19 pandemic:
+
+![mortality](mortality.png)
+
+Data source: https://www.destatis.de
+
+## Run it yourself
+Get older data:
+```
+curl https://www.destatis.de/DE/Themen/Gesellschaft-Umwelt/Bevoelkerung/Sterbefaelle-Lebenserwartung/Tabellen/sonderauswertung-sterbefaelle-endgueltige-daten.xlsx?__blob=publicationFile -o sonderauswertung-sterbefaelle-endgueltige-daten.xlsx
+
+curl https://www.destatis.de/DE/Themen/Gesellschaft-Umwelt/Bevoelkerung/Sterbefaelle-Lebenserwartung/Tabellen/sonderauswertung-sterbefaelle.xlsx?__blob=publicationFile -o sonderauswertung-sterbefaelle.xlsx
 
 ```
-curl https://www.destatis.de/DE/Themen/Gesellschaft-Umwelt/Bevoelkerung/Sterbefaelle-Lebenserwartung/Tabellen/sonderauswertung-sterbefaelle.xlsx;jsessionid=CF2DF61EDA70BF4890B6577392C84594.live742?__blob=publicationFile --output sonderauswertung-sterbefaelle.xlsx
+Create the plot
+```
+pip install -r requirements.txt
+python plot.py
 ```
