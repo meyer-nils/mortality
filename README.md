@@ -7,7 +7,7 @@ Plotting data to see if there is increased mortality during the COVID-19 pandemi
 Data source: https://www.destatis.de
 
 ## Run it yourself
-Get older data:
+Get data:
 ```
 curl https://www.destatis.de/DE/Themen/Gesellschaft-Umwelt/Bevoelkerung/Sterbefaelle-Lebenserwartung/Tabellen/sonderauswertung-sterbefaelle-endgueltige-daten.xlsx?__blob=publicationFile -o sonderauswertung-sterbefaelle-endgueltige-daten.xlsx
 
