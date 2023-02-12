@@ -1,8 +1,8 @@
 # Mortality in Germany
 
-Plotting data to see if there is increased mortality during the COVID-19 pandemic:
+Plotting data to see if there is increased mortality during the COVID-19 pandemic (2020-2023 is blue):
 
-![mortality](mortality.png)
+![animation](animation.gif)
 
 Data source: https://www.destatis.de
 

@@ -1,6 +1,7 @@
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
+from matplotlib import animation
 
 files = [
     "sonderauswertung-sterbefaelle.xlsx",
@@ -33,17 +34,24 @@ df.reset_index(inplace=True)
 df["angle"] = df.index * 2 * np.pi / 365.0
 
 # Plot
+fig = plt.figure()
 ax = plt.subplot(111, projection="polar")
-for year in range(2000, 2019):
-    brightness = 0.5 * (year - 2000) / 20
-    ax.plot(df["angle"], df[year], "-", color=str(brightness))
-for year in [2020, 2021, 2022, 2023]:
-    ax.plot(df["angle"], df[year], linewidth=3, label=year)
 ax.set_theta_zero_location("N")
 ax.set_theta_direction(-1)
 ax.set_rlabel_position(200)
 ax.set_xticks(np.linspace(0, 2 * np.pi, 13))
 ax.set_xticklabels([f"01.{month}." for month in range(1, 13)] + [""])
-ax.set_title("Daily mortality in Germany")
-ax.legend(bbox_to_anchor=(1.1, 1.1))
-plt.savefig("mortality.png")
+
+
+def update(year):
+    brightness = 0.5 * (year - 2000) / 20
+    if year < 2020:
+        ax.plot(df["angle"], df[year], "-", color=str(brightness))
+    else:
+        ax.plot(df["angle"], df[year], "-", color="cornflowerblue")
+    ax.set_title(f"Daily mortality in Germany ({year})")
+
+
+frames = list(range(2000, 2023)) + 10 * [2023]
+anim = animation.FuncAnimation(fig, update, frames=frames, interval=250, repeat=False)
+anim.save("animation.gif")
