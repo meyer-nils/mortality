@@ -6,7 +6,7 @@ files = [
     "sonderauswertung-sterbefaelle.xlsx",
     "sonderauswertung-sterbefaelle-endgueltige-daten.xlsx",
 ]
-sheets = ["D_2016_2022_Tage", "D_2000_2015_Tage"]
+sheets = ["D_2016_2023_Tage", "D_2000_2015_Tage"]
 
 # Read dataframes from file
 dfs = []
@@ -37,7 +37,7 @@ ax = plt.subplot(111, projection="polar")
 for year in range(2000, 2019):
     brightness = 0.5 * (year - 2000) / 20
     ax.plot(df["angle"], df[year], "-", color=str(brightness))
-for year in [2019, 2020, 2021, 2022]:
+for year in [2020, 2021, 2022, 2023]:
     ax.plot(df["angle"], df[year], linewidth=3, label=year)
 ax.set_theta_zero_location("N")
 ax.set_theta_direction(-1)
